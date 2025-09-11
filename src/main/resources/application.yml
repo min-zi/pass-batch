@@ -1,6 +1,21 @@
 spring:
+  batch:
+    job:
+      enabled: true
+    jdbc:
+      initialize-schema: always
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: pass_local
+    # 로컬 데이트 타임과 같은 값들이 0일 경우 null로 변경, jdbc를 통해 db로 보내는 값은 인코딩 utf-8로 지정
+    url: jdbc:mysql://127.0.0.1:3306/pass_local?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: pass_local_user
     password: passlocal123
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: update
+      show-sql: true
