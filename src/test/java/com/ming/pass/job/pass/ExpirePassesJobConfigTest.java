@@ -1,6 +1,6 @@
 package com.ming.pass.job.pass;
 
-import com.ming.pass.config.TestJobConfig;
+import com.ming.pass.config.JobConfigTests;
 import com.ming.pass.repository.pass.PassEntity;
 import com.ming.pass.repository.pass.PassRepository;
 import com.ming.pass.repository.pass.PassStatus;
@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 @SpringBatchTest // 테스트 전용 컨텍스트에 JobLauncherTestUtils 빈이 자동 등록
 @SpringBootTest
-@Import(TestJobConfig.class) // 테스트 전용 Job을 사용
+@Import(JobConfigTests.class) // 테스트 전용 Job을 사용
 @ActiveProfiles("test")
 public class ExpirePassesJobConfigTest {
     // end-to-end 테스트 사용

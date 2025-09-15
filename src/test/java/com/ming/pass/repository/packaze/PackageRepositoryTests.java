@@ -1,7 +1,5 @@
-package com.ming.pass.repository;
+package com.ming.pass.repository.packaze;
 
-import com.ming.pass.repository.packaze.PackageEntity;
-import com.ming.pass.repository.packaze.PackageRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
