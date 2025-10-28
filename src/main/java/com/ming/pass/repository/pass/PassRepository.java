@@ -9,13 +9,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PassRepository extends JpaRepository<PassEntity, Integer> {
-    List<PassEntity> findByStatusAndEndedAtLessThan(PassStatus status, LocalDateTime endedAt);
 
     @Transactional
     @Modifying
     @Query(value = "UPDATE PassEntity p" +
-            "          SET p.status = :status, " +
-            "              p.expiredAt = :expiredAt " +
-            "        WHERE p.passSeq IN (:passSeqs)")
-    int updateStatusAndExpiredAt(List<Integer> passSeqs, PassStatus status, LocalDateTime expiredAt);
+            "          SET p.remainingCount = :remainingCount, " +
+            "              p.modifiedAt = CURRENT_TIMESTAMP " +
+            "        WHERE p.passSeq = :passSeq")
+    int updateRemainingCount(Integer passSeq, Integer remainingCount);
 }
